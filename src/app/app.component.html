@@ -1,0 +1,229 @@
+
+
+<p-panel header="app-calc">
+  <app-calc></app-calc>
+</p-panel>
+
+<!------------------------------------------------------------------------>
+<p-panel header="scroll2  with primeng">
+  <scroll2></scroll2>
+</p-panel>
+
+
+<!------------------------------------------------------------------------>
+<p-panel header="scroll3  with primeng">
+  <p-button label="direction" (click)="scroll3_onClick()"></p-button>
+  {{scroll3_direction}}
+  <p-card>
+    <p-radioButton class="p-1" name="direction3" label="all"  value="all" 
+      [(ngModel)]="scroll3_direction" (ngModelChange)="scroll3_onChange($event)"></p-radioButton>
+    <p-radioButton class="p-1" name="direction3" label="horizontal"  value="horizontal" 
+      [(ngModel)]="scroll3_direction" (ngModelChange)="scroll3_onChange($event)"></p-radioButton>
+    <p-radioButton class="p-1" name="direction3" label="vertical" value="vertical" 
+      [(ngModel)]="scroll3_direction" (ngModelChange)="scroll3_onChange($event)"></p-radioButton>
+    <p-radioButton class="p-1" name="direction3" label="none" value="none" 
+      [(ngModel)]="scroll3_direction" (ngModelChange)="scroll3_onChange($event)"></p-radioButton>
+  </p-card>
+</p-panel>
+
+<scroll3 [data]="scroll3inputToChild"></scroll3>
+
+<!------------------------------------------------------------------------>
+<p-panel header="scroll4  with primeng">
+   <div class="grid">
+      <div class="col-4">
+        <p-card>
+           <p-button label="direction" (click)="scroll4_onClick()"></p-button>
+           {{scroll4_direction}}
+           <p-divider></p-divider>
+              <div class="p-field-radiobutton p-1">
+                <p-radioButton name="direction4"   value="all"  inputId="all"
+                  [(ngModel)]="scroll4_direction" ></p-radioButton>
+                <label class="p-1" for="all">all</label>
+              </div>
+              <div class="p-field-radiobutton p-1">
+                <p-radioButton name="direction4"   value="horizontal" inputId="horizontal"
+                  [(ngModel)]="scroll4_direction" ></p-radioButton>
+                <label class="p-1" for="horizontal">horizontal</label>
+              </div>
+              <div class="p-field-radiobutton p-1">
+                <p-radioButton name="direction4"  value="vertical" inputId="vertical"
+                  [(ngModel)]="scroll4_direction" ></p-radioButton>
+                <label class="p-1" for="vertical">vertical</label>
+              </div>
+              <div class="p-field-radiobutton p-1">
+                <p-radioButton name="direction4"  value="none" inputId="none"
+                  [(ngModel)]="scroll4_direction" ></p-radioButton>
+                <label class="p-1" for="none">none</label>
+              </div>
+        </p-card>
+      </div>
+      <div class="col-8">
+        <p-card>
+          <pre>
+           TEST STATEMENT
+           TEST STATEMENT
+           TEST STATEMENT
+           TEST STATEMENT
+           TEST STATEMENT
+           TEST STATEMENT
+          </pre>
+        </p-card>
+      </div>
+   </div>
+</p-panel>
+
+<scroll4 [data]="scroll4_direction"></scroll4>
+
+<!------------------------------------------------------------------------>
+<p-panel header="scroll5  with primeng  // bounceForce">
+   <div class="grid">
+      <div class="col-2">
+        <p-card>
+           <p-button label="direction" (click)="scroll5_onClick()"></p-button>
+           {{scroll5_direction}}
+           <p-divider></p-divider>
+              <div class="p-field-radiobutton p-1">
+                <p-radioButton name="direction4"   value="all"  inputId="all"
+                  [(ngModel)]="scroll5_direction" ></p-radioButton>
+                <label class="p-1" for="all">all</label>
+              </div>
+              <div class="p-field-radiobutton p-1">
+                <p-radioButton name="direction4"   value="horizontal" inputId="horizontal"
+                  [(ngModel)]="scroll5_direction" ></p-radioButton>
+                <label class="p-1" for="horizontal">horizontal</label>
+              </div>
+              <div class="p-field-radiobutton p-1">
+                <p-radioButton name="direction4"  value="vertical" inputId="vertical"
+                  [(ngModel)]="scroll5_direction" ></p-radioButton>
+                <label class="p-1" for="vertical">vertical</label>
+              </div>
+              <div class="p-field-radiobutton p-1">
+                <p-radioButton name="direction4"  value="none" inputId="none"
+                  [(ngModel)]="scroll5_direction" ></p-radioButton>
+                <label class="p-1" for="none">none</label>
+              </div>
+
+        </p-card>
+      </div>
+      <div class="col-2">
+        <p-card>
+          <!--
+            <h5>bounceForce: {{slider_val}}</h5>
+            <p-slider class="p-1" [(ngModel)]="slider_val"
+                [min]="0" [max]="1" [step]="0.1"
+            ></p-slider>
+          -->
+            <h5>bounceForce: {{scroll5_bounceForce}}</h5>
+            <p-slider class="p-1" [(ngModel)]="scroll5_bounceForce"
+                [min]="0" [max]="1" [step]="0.1"
+            ></p-slider>
+            <p-chip  
+              label={{scroll5_bounceForce}}
+            >
+            </p-chip>
+        </p-card>
+      </div>
+      <div class="col-8">
+        <p-card>
+          <pre>
+           TEST STATEMENT
+           TEST STATEMENT
+           TEST STATEMENT
+           TEST STATEMENT
+           TEST STATEMENT
+           TEST STATEMENT
+          </pre>
+        </p-card>
+      </div>
+   </div>
+</p-panel>
+
+<scroll5 [direction]="scroll5_direction" [bounceForce]="scroll5_bounceForce"></scroll5>
+
+<!------------------------------------------------------------------------>
+<p-panel header="scroll6  with primeng  // bounceForce // angular-split">
+   <div class="grid">
+      <div class="col-2">
+        <p-card>
+           <p-button label="direction" (click)="scroll6_onClick()"></p-button>
+           {{scroll6_direction}}
+           <p-divider></p-divider>
+              <div class="p-field-radiobutton p-1">
+                <p-radioButton name="direction4"   value="all"  inputId="all"
+                  [(ngModel)]="scroll6_direction" ></p-radioButton>
+                <label class="p-1" for="all">all</label>
+              </div>
+              <div class="p-field-radiobutton p-1">
+                <p-radioButton name="direction4"   value="horizontal" inputId="horizontal"
+                  [(ngModel)]="scroll6_direction" ></p-radioButton>
+                <label class="p-1" for="horizontal">horizontal</label>
+              </div>
+              <div class="p-field-radiobutton p-1">
+                <p-radioButton name="direction4"  value="vertical" inputId="vertical"
+                  [(ngModel)]="scroll6_direction" ></p-radioButton>
+                <label class="p-1" for="vertical">vertical</label>
+              </div>
+              <div class="p-field-radiobutton p-1">
+                <p-radioButton name="direction4"  value="none" inputId="none"
+                  [(ngModel)]="scroll6_direction" ></p-radioButton>
+                <label class="p-1" for="none">none</label>
+              </div>
+
+        </p-card>
+      </div>
+      <div class="col-2">
+        <p-card>
+          <!--
+            <h5>bounceForce: {{slider_val}}</h5>
+            <p-slider class="p-1" [(ngModel)]="slider_val"
+                [min]="0" [max]="1" [step]="0.1"
+            ></p-slider>
+          -->
+            <h5>bounceForce: {{scroll6_bounceForce}}</h5>
+            <p-slider class="p-1" [(ngModel)]="scroll6_bounceForce"
+                [min]="0" [max]="1" [step]="0.1"
+            ></p-slider>
+            <p-chip  
+              label={{scroll6_bounceForce}}
+            >
+            </p-chip>
+        </p-card>
+      </div>
+      <div class="col-8">
+        <p-card>
+          <pre>
+           TEST STATEMENT
+           TEST STATEMENT
+           TEST STATEMENT
+           TEST STATEMENT
+           TEST STATEMENT
+           TEST STATEMENT
+          </pre>
+        </p-card>
+      </div>
+   </div>
+</p-panel>
+
+<!--
+<scroll6 [direction]="scroll6_direction" [bounceForce]="scroll6_bounceForce"></scroll6>
+-->
+
+<div style="width: 500px; height: 500px; background: yellow;">
+  <as-split direction="vertical" gutterSize="4">
+    <as-split-area [size]="40">
+           <scroll6 [name]="up_panel_name"
+                    [splitType]="scroll6_splitType1" 
+                    [direction]="scroll6_direction" 
+                    [bounceForce]="scroll6_bounceForce">
+           </scroll6>
+    </as-split-area>
+    <as-split-area [size]="60">
+           <scroll6 [name]="down_panel_name"
+                    [splitType]="scroll6_splitType2" 
+                    [direction]="scroll6_direction" 
+                    [bounceForce]="scroll6_bounceForce">
+           </scroll6>
+    </as-split-area>
+  </as-split>
+</div>
