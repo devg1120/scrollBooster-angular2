@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { SplitType, Vsplit, Hsplit, VsplitPosition, HsplitPosition } from './service/common.service';
+import { SplitType, Vsplit, Hsplit, VsplitPosition, HsplitPosition } from './service/split.service';
 
 
 @Component({

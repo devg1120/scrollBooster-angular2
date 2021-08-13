@@ -2,26 +2,26 @@ import { Component, OnInit, Input, Output, OnDestroy,
          EventEmitter, SimpleChange, ViewChild, ElementRef } from '@angular/core';
 import ScrollBooster from 'scrollbooster';
 
-import {TableSplitSyncPos} from '../service/split.service';
+import {SplitObject} from '../service/common.service';
 
 // subscribe を保持するための Subscription を import
 import { Subscription } from 'rxjs';
 
 // サービスを登録するための import
 // アプリ全体でのサービスの共有､コンポーネント単位でのサービスの共有に関わらず､ここの import は必要 
-import { SplitService } from '../service/split.service';
+import { CommonService } from '../service/common.service';
 import { SplitType, Vsplit, Hsplit, VsplitPosition, HsplitPosition } 
            from '../service/split.service';
 
 
 
 @Component({
-  selector: 'scroll6',
-  templateUrl: './scroll6.component.html',
-  styleUrls: ['./scroll6.component.scss']
+  selector: 'scroll8',
+  templateUrl: './scroll8.component.html',
+  styleUrls: ['./scroll8.component.scss']
 })
 
-export class Scroll6Component implements OnInit {
+export class Scroll8Component implements OnInit {
  
   @Input() name;
   @Input() direction;
@@ -30,20 +30,12 @@ export class Scroll6Component implements OnInit {
   @Input() splitType : SplitType;
 
   scb :ScrollBooster;
+  splitsync : any;
+
   //_direction: string = 'none';
   active: boolean = false;
 
-  //scb.updateOptions({ emulateScroll: false });
-  //scb.updateOptions({ direction: "all" });
 
-  /**
-   * CommonService の変数の参照を取得するプロパティ
-   *
-   * @type {String}
-   * @memberof Sample1Component
-   */
-   //public serviceProp: String = 'Initialized by Sample1Component';
-  public serviceProp: TableSplitSyncPos ;
 
   /**
    * subscribe を保持するための Subscription
@@ -60,39 +52,26 @@ export class Scroll6Component implements OnInit {
    * @param {CommonService} commonService 共通サービス
    * @memberof Sample1Component
    */
-  constructor(private splitService: SplitService) { }
+  constructor(private commonService: CommonService) { }
 
   ngOnInit() {
     this.subscribe();
   }
+
+
   subscribe() {
     // イベント登録
     // サービスで共有しているデータが更新されたら発火されるイベントをキャッチする
     //this.subscription = this.splitService.sharedDataSource$.subscribe(
-    this.subscription = this.splitService.subscribe(
+    this.subscription = this.commonService.subscribe(
       this.splitGroup,
       msg => {
         
-        if (this.scb && this != msg.source) {
-             this.serviceProp = msg;
-             const state = this.scb.getState();
+      if (this.scb && this != msg.syncfunc) {
+          this.splitsync = msg.syncfunc;
 
-            switch ( this.splitType.direction) {
-            case "vertical":
-                  //console.log('vertical');
-                  //this.scb.setPosition({x: state.position.x, y: msg.y});
-                       this.scb.setPosition({x: msg.x, y: state.position.y});
-
-                  break;
-            case "horizontal":
-                  //console.log('horizontal');
-                  //this.scb.setPosition({x: msg.x, y: state.position.y});
-                       this.scb.setPosition({x: state.position.x, y: msg.y});
-                  break;
-            default:
-                  console.log('error other');
-            }
         };
+     
       }
     );
   }
@@ -115,21 +94,22 @@ export class Scroll6Component implements OnInit {
       direction: this.direction, 
       bounce: true,
       bounceForce: .3,  /* defaulr 0.1 */
-      friction: .1,    /* default 0.05 */
-      emulateScroll: false,
-      textSelection: true,
+      friction: 0.05,    /* default 0.05 */
+      emulateScroll: true,
+      textSelection: false,
       onUpdate: (state) => {
         
-        //if (state.isDragging || state.isMoving) {
-        //if (state.isDragging) {
         if (state.isMoving) {
-             const pos : TableSplitSyncPos = {
-                   source: this,
-                   x: state.position.x ,
-                   y: state.position.y 
-                   };
-             this.splitService.onNotifySharedDataChanged(this.splitGroup, pos);
-          }
+                  //const pos : TableSplitSyncPos = {
+                  //      source: this,
+                  //      x: state.position.x ,
+                  //      y: state.position.y 
+                  //      };
+                  //this.splitService.onNotifySharedDataChanged(this.splitGroup, pos);
+                  if (this.splitsync) {
+                       this.splitsync(state.position.x , state.position.y);
+                  }
+              }
           
         },
         onPointerDown: () => {
@@ -141,7 +121,38 @@ export class Scroll6Component implements OnInit {
              //this.subscribe();
         }
     });
+     this.regsync(1);
+    }
 
+
+ regsync(n: number) {
+    
+    this.commonService.onNotifySharedDataChanged(this.splitGroup, {req: n ,syncfunc: 
+    
+         (x: number, y: number) => {
+                 const state = this.scb.getState();
+
+                 switch ( this.splitType.direction) {
+                 case "vertical":
+                       //console.log('vertical');
+                       //this.scb.setPosition({x: state.position.x, y: msg.y});
+                            this.scb.setPosition({x: x, y: state.position.y});
+
+                       break;
+                 case "horizontal":
+                       //console.log('horizontal');
+                       //this.scb.setPosition({x: msg.x, y: state.position.y});
+                            this.scb.setPosition({x: state.position.x, y: y});
+                       break;
+                 default:
+                       console.log('error other');
+                 }
+
+        }
+    
+    
+    });
+  
   }
 
 
@@ -151,19 +162,19 @@ export class Scroll6Component implements OnInit {
      }
 
      if (changes['splitType']) {
-        console.log("scroll6 splitType drection:", this.splitType.direction);
-        console.log("scroll6 splitType position:", this.splitType.position);
+        console.log("scroll8 splitType drection:", this.splitType.direction);
+        console.log("scroll8 splitType position:", this.splitType.position);
      }
      if (changes['direction']) {
         let change: SimpleChange = changes['direction']; 
         let dir = changes.direction.currentValue;
-        console.log("scroll6 bounceForce change:", dir);
+        console.log("scroll8 bounceForce change:", dir);
         this.scb.updateOptions({ direction: dir });
      }
      if (changes['bounceForce']) {
         let change: SimpleChange = changes['bounceForce']; 
         let bfv = changes.bounceForce.currentValue;
-        console.log("scroll6 bounceForce change:", bfv);
+        console.log("scroll8 bounceForce change:", bfv);
         this.scb.updateOptions({ bounceForce: bfv });
      }
   }

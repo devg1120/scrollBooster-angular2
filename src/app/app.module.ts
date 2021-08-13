@@ -10,6 +10,7 @@ import { Scroll4Component } from './scroll4/scroll4.component';
 import { Scroll5Component } from './scroll5/scroll5.component';
 import { Scroll6Component } from './scroll6/scroll6.component';
 import { Scroll7Component } from './scroll7/scroll7.component';
+import { Scroll8Component } from './scroll8/scroll8.component';
 
 import { environment } from '../environments/environment';
 
@@ -54,6 +55,7 @@ imports: [
     Scroll5Component,
     Scroll6Component,
     Scroll7Component,
+    Scroll8Component,
   ],
   // サービスを登録する
   providers: [

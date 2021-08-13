@@ -6,8 +6,6 @@ import { Subscription } from 'rxjs';
 
 /*******************************************  Split Define **/
 
-//export type HsplitPosition = "up"   | "down"  ;
-//export type VsplitPosition = "left" | "right" ;
 export type VsplitPosition = "up"   | "down"  ;
 export type HsplitPosition = "left" | "right" ;
 
@@ -27,7 +25,6 @@ export type SplitType = Vsplit | Hsplit;
 
 
 export interface TableSplitSyncPos {
-      //source: string;
       source: Object;
       x: number;
       y: number;
@@ -63,7 +60,6 @@ export class SplitService {
 
   public subscribe( splitGroup: string,func: any) :Subscription{
 
-     //console.log("type", typeof func);
 
      if (!this.sharedDataSource$[splitGroup]) {
           this.sharedDataSource[splitGroup]  = new Subject<TableSplitSyncPos>();
@@ -83,7 +79,7 @@ export class SplitService {
    * @memberof SplitService
    */
   public onNotifySharedDataChanged(splitGroup: string, updateed: TableSplitSyncPos) {
-    console.log('[SplitService] onNotifySharedDataChanged fired.',splitGroup);
+    //console.log('[SplitService] onNotifySharedDataChanged fired.',splitGroup);
     //this.sharedDataSource.next(updateed);
     this.sharedDataSource[splitGroup].next(updateed);
   }

@@ -2,7 +2,7 @@ import { Component, OnInit, Input, Output, OnDestroy,
          EventEmitter, SimpleChange, ViewChild, ElementRef } from '@angular/core';
 import ScrollBooster from 'scrollbooster';
 
-import {TableSplitSyncPos} from '../service/common.service';
+import {TableSplitSyncPos} from '../service/split.service';
 
 // subscribe を保持するための Subscription を import
 import { Subscription } from 'rxjs';
@@ -73,8 +73,8 @@ export class Scroll7Component implements OnInit {
       this.splitGroup,
       msg => {
         
-        if (this.scb && this != msg.source) {
-             this.serviceProp = msg;
+      if (this.scb && this != msg.source) {
+        //this.serviceProp = msg;
              const state = this.scb.getState();
 
             switch ( this.splitType.direction) {
@@ -115,12 +115,12 @@ export class Scroll7Component implements OnInit {
       direction: this.direction, 
       bounce: true,
       bounceForce: .3,  /* defaulr 0.1 */
-      friction: .1,    /* default 0.05 */
-      emulateScroll: false,
-      textSelection: true,
+      friction: 0.05,    /* default 0.05 */
+      emulateScroll: true,
+      textSelection: false,
       onUpdate: (state) => {
         
-        //if (state.isDragging || state.isMoving) {
+      //if (state.isDragging || state.isMoving) {
         //if (state.isDragging) {
         if (state.isMoving) {
              const pos : TableSplitSyncPos = {
@@ -129,7 +129,7 @@ export class Scroll7Component implements OnInit {
                    y: state.position.y 
                    };
              this.splitService.onNotifySharedDataChanged(this.splitGroup, pos);
-          }
+              }
           
         },
         onPointerDown: () => {

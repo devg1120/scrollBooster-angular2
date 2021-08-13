@@ -2,11 +2,10 @@ import { Injectable } from '@angular/core';
 
 // イベント発火のための Subject を import
 import { Subject } from 'rxjs';
+import { Subscription } from 'rxjs';
 
 /*******************************************  Split Define **/
-
-//export type HsplitPosition = "up"   | "down"  ;
-//export type VsplitPosition = "left" | "right" ;
+/*
 export type VsplitPosition = "up"   | "down"  ;
 export type HsplitPosition = "left" | "right" ;
 
@@ -21,15 +20,13 @@ export interface Hsplit {
 }
 
 export type SplitType = Vsplit | Hsplit;
-
+*/
 /***********************************************************/
 
 
-export interface TableSplitSyncPos {
-      //source: string;
-      source: Object;
-      x: number;
-      y: number;
+export interface SplitObject {
+      req: number;
+      syncfunc: any;
 }
 
 @Injectable()
@@ -39,35 +36,52 @@ export class CommonService {
    * データの変更を通知するためのオブジェクト
    *
    * @private
-   * @memberof CommonService
+   * @memberof SplitService
    */
-   //private sharedDataSource = new Subject<string>();
-  private sharedDataSource = new Subject<TableSplitSyncPos>();
+   //private sharedDataSource = new Subject<TableSplitSyncPos>();
+     private sharedDataSource = {};
 
   /**
    * Subscribe するためのプロパティ
    * `- コンポーネント間で共有するためのプロパティ
    *
-   * @memberof CommonService
+   * @memberof SplitService
    */
-  public sharedDataSource$ = this.sharedDataSource.asObservable();
+   //public sharedDataSource$ = this.sharedDataSource.asObservable();
+   public sharedDataSource$ = {};
 
   /**
-   * コンストラクタ. CommonService のインスタンスを生成する
+   * コンストラクタ. SplitService のインスタンスを生成する
    *
-   * @memberof CommonService
+   * @memberof SplitService
    */
   constructor() {}
+
+  public subscribe( splitGroup: string,func: any) :Subscription{
+
+
+     if (!this.sharedDataSource$[splitGroup]) {
+          //this.sharedDataSource[splitGroup]  = new Subject<TableSplitSyncPos>();
+          this.sharedDataSource[splitGroup]  = new Subject<SplitObject>();
+          this.sharedDataSource$[splitGroup] = this.sharedDataSource[splitGroup].asObservable();
+
+
+     }
+
+     return this.sharedDataSource$[splitGroup].subscribe(func);
+
+  }
 
   /**
    * データの更新イベント
    *
    * @param {string} updateed 更新データ
-   * @memberof CommonService
+   * @memberof SplitService
    */
-  //public onNotifySharedDataChanged(updateed: string) {
-  public onNotifySharedDataChanged(updateed: TableSplitSyncPos) {
-    console.log('[CommonService] onNotifySharedDataChanged fired.');
-    this.sharedDataSource.next(updateed);
+  //public onNotifySharedDataChanged(splitGroup: string, updateed: TableSplitSyncPos) {
+  public onNotifySharedDataChanged(splitGroup: string, updateed: SplitObject) {
+    //console.log('[SplitService] onNotifySharedDataChanged fired.',splitGroup);
+    //this.sharedDataSource.next(updateed);
+    this.sharedDataSource[splitGroup].next(updateed);
   }
 }
