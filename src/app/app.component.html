@@ -141,7 +141,7 @@
 
 <scroll5 [direction]="scroll5_direction" [bounceForce]="scroll5_bounceForce"></scroll5>
 
-<!------------------------------------------------------------------------>
+<!------------------------------------------------------------------- scroll6 ----->
 <p-panel header="scroll6  with primeng  // bounceForce // angular-split">
    <div class="grid">
       <div class="col-2">
@@ -174,12 +174,6 @@
       </div>
       <div class="col-2">
         <p-card>
-          <!--
-            <h5>bounceForce: {{slider_val}}</h5>
-            <p-slider class="p-1" [(ngModel)]="slider_val"
-                [min]="0" [max]="1" [step]="0.1"
-            ></p-slider>
-          -->
             <h5>bounceForce: {{scroll6_bounceForce}}</h5>
             <p-slider class="p-1" [(ngModel)]="scroll6_bounceForce"
                 [min]="0" [max]="1" [step]="0.1"
@@ -208,18 +202,18 @@
 <!--
 <scroll6 [direction]="scroll6_direction" [bounceForce]="scroll6_bounceForce"></scroll6>
 -->
-
+<!--
 <div style="width: 500px; height: 500px; background: yellow;">
   <as-split direction="vertical" gutterSize="4">
     <as-split-area [size]="40">
-           <scroll6 [name]="up_panel_name"
+           <scroll6 [name]="up_panel_name1"
                     [splitType]="scroll6_splitType1" 
                     [direction]="scroll6_direction" 
                     [bounceForce]="scroll6_bounceForce">
            </scroll6>
     </as-split-area>
     <as-split-area [size]="60">
-           <scroll6 [name]="down_panel_name"
+           <scroll6 [name]="down_panel_name1"
                     [splitType]="scroll6_splitType2" 
                     [direction]="scroll6_direction" 
                     [bounceForce]="scroll6_bounceForce">
@@ -227,3 +221,173 @@
     </as-split-area>
   </as-split>
 </div>
+-->
+
+<div class="grid">
+    <div class="col">
+               <div style="width: 500px; height: 500px; background: yellow;">
+                 <as-split direction="vertical" gutterSize="4">
+                   <as-split-area [size]="40">
+                          <scroll6 [name]="up_panel_name1"
+                                   [splitType]="scroll6_splitType1" 
+                                   [direction]="scroll6_direction" 
+                                   [bounceForce]="scroll6_bounceForce">
+                          </scroll6>
+                   </as-split-area>
+                   <as-split-area [size]="60">
+                          <scroll6 [name]="down_panel_name1"
+                                   [splitType]="scroll6_splitType2" 
+                                   [direction]="scroll6_direction" 
+                                   [bounceForce]="scroll6_bounceForce">
+                          </scroll6>
+                   </as-split-area>
+                 </as-split>
+               </div>
+    </div>
+    <div class="col">
+               <div style="width: 500px; height: 500px; background: yellow;">
+                 <as-split direction="vertical" gutterSize="4">
+                   <as-split-area [size]="40">
+                          <scroll6 [name]="up_panel_name2"
+                                   [splitType]="scroll6_splitType1" 
+                                   [direction]="scroll6_direction" 
+                                   [bounceForce]="scroll6_bounceForce">
+                          </scroll6>
+                   </as-split-area>
+                   <as-split-area [size]="60">
+                          <scroll6 [name]="down_panel_name2"
+                                   [splitType]="scroll6_splitType2" 
+                                   [direction]="scroll6_direction" 
+                                   [bounceForce]="scroll6_bounceForce">
+                          </scroll6>
+                   </as-split-area>
+                 </as-split>
+               </div>
+    </div>
+</div>
+
+<!------------------------------------------------------------------- scroll7 ----->
+<p-panel header="scroll7  with primeng  // bounceForce // angular-split">
+   <div class="grid">
+      <div class="col-2">
+        <p-card>
+           <p-button label="direction" (click)="scroll7_onClick()"></p-button>
+           {{scroll7_direction}}
+           <p-divider></p-divider>
+              <div class="p-field-radiobutton p-1">
+                <p-radioButton name="direction4"   value="all"  inputId="all"
+                  [(ngModel)]="scroll7_direction" ></p-radioButton>
+                <label class="p-1" for="all">all</label>
+              </div>
+              <div class="p-field-radiobutton p-1">
+                <p-radioButton name="direction4"   value="horizontal" inputId="horizontal"
+                  [(ngModel)]="scroll7_direction" ></p-radioButton>
+                <label class="p-1" for="horizontal">horizontal</label>
+              </div>
+              <div class="p-field-radiobutton p-1">
+                <p-radioButton name="direction4"  value="vertical" inputId="vertical"
+                  [(ngModel)]="scroll7_direction" ></p-radioButton>
+                <label class="p-1" for="vertical">vertical</label>
+              </div>
+              <div class="p-field-radiobutton p-1">
+                <p-radioButton name="direction4"  value="none" inputId="none"
+                  [(ngModel)]="scroll7_direction" ></p-radioButton>
+                <label class="p-1" for="none">none</label>
+              </div>
+
+        </p-card>
+      </div>
+      <div class="col-2">
+        <p-card>
+            <h5>bounceForce: {{scroll7_bounceForce}}</h5>
+            <p-slider class="p-1" [(ngModel)]="scroll7_bounceForce"
+                [min]="0" [max]="1" [step]="0.1"
+            ></p-slider>
+            <p-chip  
+              label={{scroll7_bounceForce}}
+            >
+            </p-chip>
+        </p-card>
+      </div>
+      <div class="col-8">
+        <p-card>
+          <pre>
+           Split7
+               - SplitService
+               - splitGroup
+          </pre>
+        </p-card>
+      </div>
+   </div>
+</p-panel>
+
+<!--
+<div style="width: 500px; height: 500px; background: yellow;">
+  <as-split direction="vertical" gutterSize="4">
+    <as-split-area [size]="40">
+           <scroll7 [name]="up_panel_name1"
+                    [splitGroup]="scroll7_splitgroup_1"
+                    [splitType]="scroll7_splitType1" 
+                    [direction]="scroll7_direction" 
+                    [bounceForce]="scroll7_bounceForce">
+           </scroll7>
+    </as-split-area>
+    <as-split-area [size]="60">
+           <scroll7 [name]="down_panel_name1"
+                    [splitGroup]="scroll7_splitgroup_1"
+                    [splitType]="scroll7_splitType2" 
+                    [direction]="scroll7_direction" 
+                    [bounceForce]="scroll7_bounceForce">
+           </scroll7>
+    </as-split-area>
+  </as-split>
+</div>
+-->
+
+<div class="grid">
+    <div class="col">
+               <div style="width: 500px; height: 500px; background: yellow;">
+                 <as-split direction="vertical" gutterSize="4">
+                   <as-split-area [size]="40">
+                          <scroll7 [name]="up_panel_name1"
+                                   [splitGroup]="scroll7_splitgroup_1"
+                                   [splitType]="scroll7_splitType1" 
+                                   [direction]="scroll7_direction" 
+                                   [bounceForce]="scroll7_bounceForce">
+                          </scroll7>
+                   </as-split-area>
+                   <as-split-area [size]="60">
+                          <scroll7 [name]="down_panel_name1"
+                                   [splitGroup]="scroll7_splitgroup_1"
+                                   [splitType]="scroll7_splitType2" 
+                                   [direction]="scroll7_direction" 
+                                   [bounceForce]="scroll7_bounceForce">
+                          </scroll7>
+                   </as-split-area>
+                 </as-split>
+               </div>
+    </div>
+    <div class="col">
+               <div style="width: 500px; height: 500px; background: yellow;">
+                 <as-split direction="vertical" gutterSize="4">
+                   <as-split-area [size]="40">
+                          <scroll7 [name]="up_panel_name2"
+                                   [splitGroup]="scroll7_splitgroup_2"
+                                   [splitType]="scroll7_splitType1" 
+                                   [direction]="scroll7_direction" 
+                                   [bounceForce]="scroll7_bounceForce">
+                          </scroll7>
+                   </as-split-area>
+                   <as-split-area [size]="60">
+                          <scroll7 [name]="down_panel_name2"
+                                   [splitGroup]="scroll7_splitgroup_2"
+                                   [splitType]="scroll7_splitType2" 
+                                   [direction]="scroll7_direction" 
+                                   [bounceForce]="scroll7_bounceForce">
+                          </scroll7>
+                   </as-split-area>
+                 </as-split>
+               </div>
+    </div>
+</div>
+

@@ -9,6 +9,7 @@ import { Scroll3Component } from './scroll3/scroll3.component';
 import { Scroll4Component } from './scroll4/scroll4.component';
 import { Scroll5Component } from './scroll5/scroll5.component';
 import { Scroll6Component } from './scroll6/scroll6.component';
+import { Scroll7Component } from './scroll7/scroll7.component';
 
 import { environment } from '../environments/environment';
 
@@ -27,6 +28,7 @@ import { AngularSplitModule } from 'angular-split';
 // サービスを登録するための import
 // コンポーネントで DI する場合はこの import は不要
 import { CommonService } from './service/common.service';
+import { SplitService } from './service/split.service';
 
 
 @NgModule({
@@ -51,11 +53,13 @@ imports: [
     Scroll4Component,
     Scroll5Component,
     Scroll6Component,
+    Scroll7Component,
   ],
   // サービスを登録する
   providers: [
     // コンポーネントで DI する場合はここでの登録は不要
-    CommonService
+    CommonService,
+    SplitService
   ],
   bootstrap: [AppComponent]
 })

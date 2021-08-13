@@ -3,7 +3,29 @@ import { Injectable } from '@angular/core';
 // イベント発火のための Subject を import
 import { Subject } from 'rxjs';
 
+/*******************************************  Split Define **/
+
+export type HsplitPosition = "up"   | "down"  ;
+export type VsplitPosition = "left" | "right" ;
+
+export interface Vsplit {
+   direction : "vertical";
+   position  : VsplitPosition;
+}
+
+export interface Hsplit {
+   direction : "horizontal";
+   position  : HsplitPosition;
+}
+
+export type SplitType = Vsplit | Hsplit;
+
+/***********************************************************/
+
+
 export interface TableSplitSyncPos {
+      //source: string;
+      source: Object;
       x: number;
       y: number;
 }

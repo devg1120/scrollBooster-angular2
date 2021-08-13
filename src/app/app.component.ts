@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
-import { SplitType, Vsplit, Hsplit, VsplitPosition, HsplitPosition }
-               from './scroll6/scroll6.component';
+import { SplitType, Vsplit, Hsplit, VsplitPosition, HsplitPosition } from './service/common.service';
+
 
 @Component({
   selector: 'my-app',
@@ -46,10 +46,12 @@ export class AppComponent {
 
   /******************************************* scrool6 ***/
 
-  up_panel_name :string = "UP";
-  down_panel_name :string = "DOWN";
-  scroll6_direction : string = 'none';
-  scroll6_bounceForce : number = 0.3;
+  up_panel_name1 :string = "1 UP";
+  down_panel_name1 :string = "1 DOWN";
+  up_panel_name2 :string = "2 UP";
+  down_panel_name2 :string = "2 DOWN";
+  scroll6_direction : string = 'horizontal';
+  scroll6_bounceForce : number = 0.7;
   // scroll6_slider_val : number = 0;
 
   scroll6_splitType1 : Hsplit = { direction : "horizontal", position : "up"};
@@ -57,6 +59,26 @@ export class AppComponent {
 
   scroll6_onClick() {
     console.log("scroll6 click:", this.scroll6_direction);
+
+  }
+
+  /******************************************* scrool7 ***/
+
+  scroll7_splitgroup_1 = "group1"
+  scroll7_splitgroup_2 = "group2"
+  //up_panel_name1 :string = "1 UP";
+  //down_panel_name1 :string = "1 DOWN";
+  //up_panel_name2 :string = "2 UP";
+  //down_panel_name2 :string = "2 DOWN";
+  scroll7_direction : string = 'horizontal';
+  scroll7_bounceForce : number = 0.7;
+  // scroll6_slider_val : number = 0;
+
+  scroll7_splitType1 : Hsplit = { direction : "horizontal", position : "up"};
+  scroll7_splitType2 : Hsplit = { direction : "horizontal", position : "down"};
+
+  scroll7_onClick() {
+    console.log("scroll7 click:", this.scroll7_direction);
 
   }
 }
