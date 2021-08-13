@@ -80,12 +80,14 @@ export class Scroll7Component implements OnInit {
             switch ( this.splitType.direction) {
             case "vertical":
                   //console.log('vertical');
-                       this.scb.setPosition({x: state.position.x, y: msg.y});
+                  //this.scb.setPosition({x: state.position.x, y: msg.y});
+                       this.scb.setPosition({x: msg.x, y: state.position.y});
 
                   break;
             case "horizontal":
                   //console.log('horizontal');
-                       this.scb.setPosition({x: msg.x, y: state.position.y});
+                  //this.scb.setPosition({x: msg.x, y: state.position.y});
+                       this.scb.setPosition({x: state.position.x, y: msg.y});
                   break;
             default:
                   console.log('error other');

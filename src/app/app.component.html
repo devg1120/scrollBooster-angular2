@@ -228,14 +228,16 @@
                <div style="width: 500px; height: 500px; background: yellow;">
                  <as-split direction="vertical" gutterSize="4">
                    <as-split-area [size]="40">
-                          <scroll6 [name]="up_panel_name1"
+                          <scroll6 [name]="scroll6_panel_name_1up"
+                                   [splitGroup]="scroll6_splitgroup_1"
                                    [splitType]="scroll6_splitType1" 
                                    [direction]="scroll6_direction" 
                                    [bounceForce]="scroll6_bounceForce">
                           </scroll6>
                    </as-split-area>
                    <as-split-area [size]="60">
-                          <scroll6 [name]="down_panel_name1"
+                          <scroll6 [name]="scroll6_panel_name_1down"
+                                   [splitGroup]="scroll6_splitgroup_1"
                                    [splitType]="scroll6_splitType2" 
                                    [direction]="scroll6_direction" 
                                    [bounceForce]="scroll6_bounceForce">
@@ -248,14 +250,16 @@
                <div style="width: 500px; height: 500px; background: yellow;">
                  <as-split direction="vertical" gutterSize="4">
                    <as-split-area [size]="40">
-                          <scroll6 [name]="up_panel_name2"
+                          <scroll6 [name]="scroll6_panel_name_2up"
+                                   [splitGroup]="scroll6_splitgroup_1"
                                    [splitType]="scroll6_splitType1" 
                                    [direction]="scroll6_direction" 
                                    [bounceForce]="scroll6_bounceForce">
                           </scroll6>
                    </as-split-area>
                    <as-split-area [size]="60">
-                          <scroll6 [name]="down_panel_name2"
+                          <scroll6 [name]="scroll6_panel_name_2down"
+                                   [splitGroup]="scroll6_splitgroup_1"
                                    [splitType]="scroll6_splitType2" 
                                    [direction]="scroll6_direction" 
                                    [bounceForce]="scroll6_bounceForce">
@@ -325,7 +329,7 @@
 <div style="width: 500px; height: 500px; background: yellow;">
   <as-split direction="vertical" gutterSize="4">
     <as-split-area [size]="40">
-           <scroll7 [name]="up_panel_name1"
+           <scroll7 [name]="scroll7_panrl_name_1up"
                     [splitGroup]="scroll7_splitgroup_1"
                     [splitType]="scroll7_splitType1" 
                     [direction]="scroll7_direction" 
@@ -333,7 +337,7 @@
            </scroll7>
     </as-split-area>
     <as-split-area [size]="60">
-           <scroll7 [name]="down_panel_name1"
+           <scroll7 [name]="scroll7_panrl_name_1down"  
                     [splitGroup]="scroll7_splitgroup_1"
                     [splitType]="scroll7_splitType2" 
                     [direction]="scroll7_direction" 
@@ -349,7 +353,7 @@
                <div style="width: 500px; height: 500px; background: yellow;">
                  <as-split direction="vertical" gutterSize="4">
                    <as-split-area [size]="40">
-                          <scroll7 [name]="up_panel_name1"
+                          <scroll7 [name]="scroll7_panel_name_1up"  
                                    [splitGroup]="scroll7_splitgroup_1"
                                    [splitType]="scroll7_splitType1" 
                                    [direction]="scroll7_direction" 
@@ -357,7 +361,7 @@
                           </scroll7>
                    </as-split-area>
                    <as-split-area [size]="60">
-                          <scroll7 [name]="down_panel_name1"
+                          <scroll7 [name]="scroll7_panel_name_1down"  
                                    [splitGroup]="scroll7_splitgroup_1"
                                    [splitType]="scroll7_splitType2" 
                                    [direction]="scroll7_direction" 
@@ -371,7 +375,7 @@
                <div style="width: 500px; height: 500px; background: yellow;">
                  <as-split direction="vertical" gutterSize="4">
                    <as-split-area [size]="40">
-                          <scroll7 [name]="up_panel_name2"
+                          <scroll7 [name]="scroll7_panel_name_2up"  
                                    [splitGroup]="scroll7_splitgroup_2"
                                    [splitType]="scroll7_splitType1" 
                                    [direction]="scroll7_direction" 
@@ -379,7 +383,7 @@
                           </scroll7>
                    </as-split-area>
                    <as-split-area [size]="60">
-                          <scroll7 [name]="down_panel_name2"
+                          <scroll7 [name]="scroll7_panel_name_2down"  
                                    [splitGroup]="scroll7_splitgroup_2"
                                    [splitType]="scroll7_splitType2" 
                                    [direction]="scroll7_direction" 
@@ -391,3 +395,97 @@
     </div>
 </div>
 
+
+<div class="grid">
+    <div class="col">
+               <div style="width: 500px; height: 500px; background: yellow;">
+                 <as-split direction="vertical" gutterSize="4">
+                   <as-split-area [size]="40">
+                          <scroll7 [name]="'panel71up'"  
+                                   [splitGroup]="'group73'"
+                                   [splitType]="{ direction : 'vertical', position : 'up'} "
+                                   [direction]="'horizontal'" 
+                                   [bounceForce]="'0,3'">
+                          </scroll7>
+                   </as-split-area>
+                   <as-split-area [size]="60">
+                          <scroll7 [name]="'panel71down'"  
+                                   [splitGroup]="'group73'"
+                                   [splitType]="{ direction : 'vertical', position : 'down'} "  
+                                   [direction]="'horizontal'" 
+                                   [bounceForce]="'0.3'">
+                          </scroll7>
+                   </as-split-area>
+                 </as-split>
+               </div>
+    </div>
+    <div class="col">
+               <div style="width: 500px; height: 500px; background: yellow;">
+                 <as-split direction="vertical" gutterSize="4">
+                   <as-split-area [size]="40">
+                          <scroll7 [name]="'panel72up'"  
+                                   [splitGroup]="'group74'"
+                                   [splitType]="{ direction : 'vertical', position : 'up'} "
+                                   [direction]="'horizontal'" 
+                                   [bounceForce]="'0,3'">
+                          </scroll7>
+                   </as-split-area>
+                   <as-split-area [size]="60">
+                          <scroll7 [name]="'panel72down'"  
+                                   [splitGroup]="'group74'"
+                                   [splitType]="{ direction : 'vertical', position : 'down'} "  
+                                   [direction]="'horizontal'" 
+                                   [bounceForce]="'0.3'">
+                          </scroll7>
+                   </as-split-area>
+                 </as-split>
+               </div>
+    </div>
+</div>
+
+<div class="grid">
+    <div class="col">
+               <div style="width: 500px; height: 500px; background: yellow;">
+                 <as-split direction="horizontal" gutterSize="4">
+                   <as-split-area [size]="60">
+                          <scroll7 [name]="'panel75left'"  
+                                   [splitGroup]="'group75'"
+                                   [splitType]="{ direction : 'horizontal', position : 'left'} "
+                                   [direction]="'vertical'" 
+                                   [bounceForce]="'0,3'">
+                          </scroll7>
+                   </as-split-area>
+                   <as-split-area [size]="60">
+                          <scroll7 [name]="'panel75down'"  
+                                   [splitGroup]="'group75'"
+                                   [splitType]="{ direction : 'horizontal', position : 'right'} "  
+                                   [direction]="'vertical'" 
+                                   [bounceForce]="'0.3'">
+                          </scroll7>
+                   </as-split-area>
+                 </as-split>
+               </div>
+    </div>
+    <div class="col">
+               <div style="width: 500px; height: 500px; background: yellow;">
+                 <as-split direction="horizontal" gutterSize="4">
+                   <as-split-area [size]="60">
+                          <scroll7 [name]="'panel76left'"  
+                                   [splitGroup]="'group76'"
+                                   [splitType]="{ direction : 'horizontal', position : 'left'} "
+                                   [direction]="'vertical'" 
+                                   [bounceForce]="'0,3'">
+                          </scroll7>
+                   </as-split-area>
+                   <as-split-area [size]="60">
+                          <scroll7 [name]="'panel76right'"  
+                                   [splitGroup]="'group76'"
+                                   [splitType]="{ direction : 'horizontal', position : 'right'} "  
+                                   [direction]="'vertical'" 
+                                   [bounceForce]="'0.3'">
+                          </scroll7>
+                   </as-split-area>
+                 </as-split>
+               </div>
+    </div>
+</div>

@@ -9,9 +9,10 @@ import { Subscription } from 'rxjs';
 
 // サービスを登録するための import
 // アプリ全体でのサービスの共有､コンポーネント単位でのサービスの共有に関わらず､ここの import は必要 
-import { CommonService } from '../service/common.service';
+import { SplitService } from '../service/split.service';
 import { SplitType, Vsplit, Hsplit, VsplitPosition, HsplitPosition } 
-            from '../service/common.service';
+           from '../service/split.service';
+
 
 
 @Component({
@@ -25,6 +26,7 @@ export class Scroll6Component implements OnInit {
   @Input() name;
   @Input() direction;
   @Input() bounceForce;
+  @Input() splitGroup : string;
   @Input() splitType : SplitType;
 
   scb :ScrollBooster;
@@ -58,7 +60,7 @@ export class Scroll6Component implements OnInit {
    * @param {CommonService} commonService 共通サービス
    * @memberof Sample1Component
    */
-  constructor(private commonService: CommonService) { }
+  constructor(private splitService: SplitService) { }
 
   ngOnInit() {
     this.subscribe();
@@ -66,7 +68,9 @@ export class Scroll6Component implements OnInit {
   subscribe() {
     // イベント登録
     // サービスで共有しているデータが更新されたら発火されるイベントをキャッチする
-    this.subscription = this.commonService.sharedDataSource$.subscribe(
+    //this.subscription = this.splitService.sharedDataSource$.subscribe(
+    this.subscription = this.splitService.subscribe(
+      this.splitGroup,
       msg => {
         
         if (this.scb && this != msg.source) {
@@ -76,12 +80,14 @@ export class Scroll6Component implements OnInit {
             switch ( this.splitType.direction) {
             case "vertical":
                   //console.log('vertical');
-                       this.scb.setPosition({x: state.position.x, y: msg.y});
+                  //this.scb.setPosition({x: state.position.x, y: msg.y});
+                       this.scb.setPosition({x: msg.x, y: state.position.y});
 
                   break;
             case "horizontal":
                   //console.log('horizontal');
-                       this.scb.setPosition({x: msg.x, y: state.position.y});
+                  //this.scb.setPosition({x: msg.x, y: state.position.y});
+                       this.scb.setPosition({x: state.position.x, y: msg.y});
                   break;
             default:
                   console.log('error other');
@@ -113,18 +119,6 @@ export class Scroll6Component implements OnInit {
       emulateScroll: false,
       textSelection: true,
       onUpdate: (state) => {
-        //console.dir(this.name);
-        //console.dir(state);
-        /*
-        if (this.active) {
-             const pos : TableSplitSyncPos = {
-                   source: this.name,
-                   x: state.position.x ,
-                   y: state.position.y 
-                   };
-             this.commonService.onNotifySharedDataChanged(pos);
-          }
-         */
         
         //if (state.isDragging || state.isMoving) {
         //if (state.isDragging) {
@@ -134,7 +128,7 @@ export class Scroll6Component implements OnInit {
                    x: state.position.x ,
                    y: state.position.y 
                    };
-             this.commonService.onNotifySharedDataChanged(pos);
+             this.splitService.onNotifySharedDataChanged(this.splitGroup, pos);
           }
           
         },
@@ -148,10 +142,6 @@ export class Scroll6Component implements OnInit {
         }
     });
 
-    // if (this.splitType) {
-    //    console.log("scroll6 splitType drection:", this.splitType.direction);
-    //    console.log("scroll6 splitType position:", this.splitType.position);
-    // }
   }
 
 

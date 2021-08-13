@@ -6,8 +6,10 @@ import { Subscription } from 'rxjs';
 
 /*******************************************  Split Define **/
 
-export type HsplitPosition = "up"   | "down"  ;
-export type VsplitPosition = "left" | "right" ;
+//export type HsplitPosition = "up"   | "down"  ;
+//export type VsplitPosition = "left" | "right" ;
+export type VsplitPosition = "up"   | "down"  ;
+export type HsplitPosition = "left" | "right" ;
 
 export interface Vsplit {
    direction : "vertical";
